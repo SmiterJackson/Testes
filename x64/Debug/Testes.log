@@ -1,0 +1,18 @@
+﻿  Testes.cpp
+C:\Dev\Cplusplus\Testes\Testes.cpp(122,1): warning C4267: 'argumento': conversão de 'size_t' para 'int', possível perda de dados
+C:\Dev\Cplusplus\Testes\Testes.cpp(263,1): warning C4267: 'argumento': conversão de 'size_t' para 'int', possível perda de dados
+Testes.obj : error LNK2019: símbolo externo não resolvido, __imp_accept, referenciado na função "public: void __cdecl Server::Execution(void)" (?Execution@Server@@QEAAXXZ)
+Testes.obj : error LNK2019: símbolo externo não resolvido, __imp_bind, referenciado na função "public: __cdecl Server::Server(void)" (??0Server@@QEAA@XZ)
+Testes.obj : error LNK2019: símbolo externo não resolvido, __imp_closesocket, referenciado na função "public: __cdecl Client::~Client(void)" (??1Client@@QEAA@XZ)
+Testes.obj : error LNK2019: símbolo externo não resolvido, __imp_connect, referenciado na função "public: __cdecl Client::Client(void)" (??0Client@@QEAA@XZ)
+Testes.obj : error LNK2019: símbolo externo não resolvido, __imp_listen, referenciado na função "public: __cdecl Server::Server(void)" (??0Server@@QEAA@XZ)
+Testes.obj : error LNK2019: símbolo externo não resolvido, __imp_recv, referenciado na função "public: void __cdecl Client::Execution(void)" (?Execution@Client@@QEAAXXZ)
+Testes.obj : error LNK2019: símbolo externo não resolvido, __imp_send, referenciado na função "public: void __cdecl Client::Execution(void)" (?Execution@Client@@QEAAXXZ)
+Testes.obj : error LNK2019: símbolo externo não resolvido, __imp_shutdown, referenciado na função "public: __cdecl Client::~Client(void)" (??1Client@@QEAA@XZ)
+Testes.obj : error LNK2019: símbolo externo não resolvido, __imp_socket, referenciado na função "public: __cdecl Client::Client(void)" (??0Client@@QEAA@XZ)
+Testes.obj : error LNK2019: símbolo externo não resolvido, __imp_WSAStartup, referenciado na função "public: __cdecl MyChat::MyChat(void)" (??0MyChat@@QEAA@XZ)
+Testes.obj : error LNK2019: símbolo externo não resolvido, __imp_WSACleanup, referenciado na função "public: __cdecl MyChat::~MyChat(void)" (??1MyChat@@QEAA@XZ)
+Testes.obj : error LNK2019: símbolo externo não resolvido, __imp_WSAGetLastError, referenciado na função "public: __cdecl Client::Client(void)" (??0Client@@QEAA@XZ)
+Testes.obj : error LNK2019: símbolo externo não resolvido, __imp_getaddrinfo, referenciado na função "public: __cdecl Client::Client(void)" (??0Client@@QEAA@XZ)
+Testes.obj : error LNK2019: símbolo externo não resolvido, __imp_freeaddrinfo, referenciado na função "public: __cdecl Client::Client(void)" (??0Client@@QEAA@XZ)
+C:\Dev\Cplusplus\Testes\x64\Debug\Testes.exe : fatal error LNK1120: 14 externo não resolvidos

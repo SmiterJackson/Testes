@@ -1,0 +1,109 @@
+#define PORT 8080
+#define DEFAULT_IP "51.38.81.49"
+
+std::vector<char> readbuffer(20 * 1024);
+
+void ReadData(asio::ip::tcp::socket& socket)
+{
+	socket.async_read_some(asio::buffer(readbuffer.data(), readbuffer.size()),
+		[&](std::error_code ec, std::size_t size)
+		{
+			if(!ec)
+			{
+				std::cout << "\n\nRecebido " << size << " bytes.\n\n";
+
+				for (int i = 0; i < size; i++)
+					std::cout << readbuffer[i];
+
+				ReadData(socket);
+			}
+		}
+	);
+}
+
+class Client
+{
+public:
+	Client()
+	{};
+	~Client()
+	{};
+
+	Client(const Client&) = delete;
+
+private:
+
+};
+
+class Server
+{
+public:
+	Server()
+	{};
+	~Server()
+	{};
+
+	Server(const Server& other) = delete;
+
+private:
+
+};
+
+int main()
+{
+	setlocale(LC_ALL, "");
+	std::string entry;
+	
+	asio::error_code ec;
+
+	asio::io_context context;
+
+	asio::io_context::work idlework(context);
+
+	std::thread thrContext = std::thread([&]() { context.run(); });
+
+	asio::ip::address addr;
+	std::cout << "Forneça um Código IP: ";
+	do 
+	{
+		std::cin >> entry;
+		addr = asio::ip::make_address(entry, ec);
+
+		if(ec)
+			std::cout << "Valor inserido inválido! ERROR: " << ec.message() << std::endl;
+
+	} while (ec);
+	ec.clear();
+	asio::ip::tcp::endpoint endpoint(addr, 80);
+
+	asio::ip::tcp::socket socket(context);
+	socket.connect(endpoint, ec);
+	if (!ec)
+	{
+		std::cout << "Conectado!" << std::endl;
+	}
+	else
+	{
+		std::cout << "Falha para a conexão! ERROR: " << ec.message() << std::endl;
+	}
+
+	if(socket.is_open())
+	{
+		ReadData(socket);
+
+		std::string sRequest =
+			"GET /index.html HTTP/1.1\r\n"
+			"Host: example.com\r\n"
+			"Connection: close\r\n\r\n";
+
+		socket.write_some(asio::buffer(sRequest.data(), sRequest.size()));
+
+		Sleep(3000);
+
+		context.stop();
+		if(thrContext.joinable())
+			thrContext.join();
+	}
+
+	return 0;
+};
